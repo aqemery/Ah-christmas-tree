@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://efjw4dkbdu6h"]
+
+[ext_resource type="Texture2D" uid="uid://5yx7u6c23i2q" path="res://images/santa-fall.png" id="1_w1fj6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4eii"]
+
+[node name="SantaFall" type="RigidBody2D"]
+gravity_scale = 0.1
+
+[node name="Santa-fall" type="Sprite2D" parent="."]
+texture = ExtResource("1_w1fj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o4eii")

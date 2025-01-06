@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://betou8w0l6526"]
+
+[ext_resource type="Script" path="res://present.gd" id="1_dsfh1"]
+[ext_resource type="Texture2D" uid="uid://btnw45n6640rx" path="res://images/presents.png" id="1_o1rws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrxi4"]
+size = Vector2(9, 8)
+
+[node name="present" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_dsfh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o1rws")
+centered = false
+hframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, 8)
+shape = SubResource("RectangleShape2D_hrxi4")

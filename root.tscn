@@ -1,0 +1,748 @@
+[gd_scene load_steps=39 format=3 uid="uid://ba2i4vc3d5lvd"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_8gr6a"]
+[ext_resource type="Texture2D" uid="uid://bdhgtv5cnbja5" path="res://images/background.png" id="1_jd6kg"]
+[ext_resource type="Script" path="res://tree.gd" id="1_jv1hq"]
+[ext_resource type="Texture2D" uid="uid://b6dnnyv5dnumf" path="res://images/tree.png" id="2_8ey4m"]
+[ext_resource type="Texture2D" uid="uid://qwr25p318km2" path="res://images/houses.png" id="4_8wxqs"]
+[ext_resource type="Texture2D" uid="uid://cp6e5q5cvdfet" path="res://images/hole.png" id="4_vjq3m"]
+[ext_resource type="Texture2D" uid="uid://c16ckb2iju370" path="res://images/santa.png" id="5_hrlxt"]
+[ext_resource type="Script" path="res://santa.gd" id="5_pa0or"]
+[ext_resource type="Texture2D" uid="uid://c2uvpkyj5rsuq" path="res://images/raindeer.png" id="6_jpp5k"]
+[ext_resource type="Texture2D" uid="uid://ckku0yv2vdcdh" path="res://images/star.png" id="8_jpnnm"]
+[ext_resource type="AudioStream" uid="uid://cbuqdkc8bihey" path="res://sounds/presents.wav" id="9_exfa1"]
+[ext_resource type="PackedScene" uid="uid://dvj0qmydworlj" path="res://rudolph.tscn" id="10_tnyud"]
+[ext_resource type="PackedScene" uid="uid://i57ruxggjmcb" path="res://explode.tscn" id="11_7nm5e"]
+[ext_resource type="AudioStream" uid="uid://dwo8mqgop1o21" path="res://sounds/die.wav" id="12_lgku5"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="13_v4shx"]
+[ext_resource type="AudioStream" uid="uid://bmh3vxi06hip1" path="res://sounds/break_roof.wav" id="14_wqbv0"]
+[ext_resource type="AudioStream" uid="uid://cwud0r1mpxcl2" path="res://sounds/hit-present.wav" id="16_80uth"]
+[ext_resource type="AudioStream" uid="uid://djyhlgtrsjepf" path="res://sounds/santa-hit.wav" id="17_eevei"]
+[ext_resource type="AudioStream" uid="uid://crj5onfuhu6uf" path="res://sounds/music.wav" id="19_cnnd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fb12"]
+size = Vector2(90, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toxop"]
+size = Vector2(31, 18)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hthq1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 8, 1)
+direction = Vector3(-1, 0, 0)
+spread = 1.0
+initial_velocity_min = 80.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_806an"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Raindeer/Raindeer4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Raindeer/Raindeer3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(310, 88)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Raindeer/Raindeer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(260, 88)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Raindeer/Raindeer2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(285, 88)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sleige:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(227, 83)]
+}
+
+[sub_resource type="Animation" id="Animation_mj6dt"]
+resource_name = "fly"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Raindeer/Raindeer4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(335, 88), Vector2(335, 89), Vector2(335, 88), Vector2(335, 87), Vector2(335, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Raindeer/Raindeer3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.6, 1.1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(310, 88), Vector2(310, 89), Vector2(310, 88), Vector2(310, 87)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Raindeer/Raindeer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.7, 1.2, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(260, 88), Vector2(260, 89), Vector2(260, 88), Vector2(260, 87)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Raindeer/Raindeer2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.8, 1.3, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(285, 88), Vector2(285, 89), Vector2(285, 88), Vector2(285, 87)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sleige:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(227, 83), Vector2(227, 84), Vector2(227, 83), Vector2(227, 82), Vector2(227, 83)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lye33"]
+_data = {
+"RESET": SubResource("Animation_806an"),
+"fly": SubResource("Animation_mj6dt")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rocjl"]
+normal = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pd1eu"]
+size = Vector2(21, 6)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xngk"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 8.226
+initial_velocity_min = 80.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.8, 0.160784, 0.266667, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rm0gi"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 8.226
+initial_velocity_min = 80.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.290196, 0.466667, 0.788235, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1tfef"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 8.226
+initial_velocity_min = 80.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.952941, 0.901961, 0.490196, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptkh1"]
+size = Vector2(24, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4qr7"]
+atlas = ExtResource("8_jpnnm")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f75xj"]
+atlas = ExtResource("8_jpnnm")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upswt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4qr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f75xj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqqyb"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_dvwab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Santa:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Santa:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.179769]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tree:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(74, 85)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tree:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tree:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tree/GPUParticlesRed:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tree/GPUParticlesBlue:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tree/GPUParticlesYellow:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Parallax2D:process_mode")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Parallax2D/Hole:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("break_roof:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1pyp7"]
+resource_name = "take_off"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Santa:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2.82843),
+"update": 0,
+"values": [Vector2(-170, 118), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Santa:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.179769, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tree:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 0.9),
+"transitions": PackedFloat32Array(0.217638, 2.2974, 1),
+"update": 0,
+"values": [Vector2(36, 153), Vector2(53, 45), Vector2(87, 84)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tree:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tree:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 2.2974, 0.0717936),
+"update": 0,
+"values": [-1.5708, -1.5708, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tree/GPUParticlesRed:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tree/GPUParticlesBlue:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tree/GPUParticlesYellow:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Parallax2D:process_mode")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Parallax2D/Hole:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("break_roof:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkuxy"]
+_data = {
+"RESET": SubResource("Animation_dvwab"),
+"take_off": SubResource("Animation_1pyp7")
+}
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_8gr6a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(192, 108)
+script = ExtResource("13_v4shx")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_jd6kg")
+centered = false
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(384, 0)
+autoscroll = Vector2(-192, 0)
+
+[node name="Houses" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(0, 140)
+texture = ExtResource("4_8wxqs")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="Parallax2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D/Area2D"]
+position = Vector2(60, 194.5)
+shape = SubResource("RectangleShape2D_7fb12")
+
+[node name="Area2D2" type="Area2D" parent="Parallax2D"]
+position = Vector2(127, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D/Area2D2"]
+position = Vector2(60, 194.5)
+shape = SubResource("RectangleShape2D_7fb12")
+
+[node name="Area2D3" type="Area2D" parent="Parallax2D"]
+position = Vector2(257, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D/Area2D3"]
+position = Vector2(60, 194.5)
+shape = SubResource("RectangleShape2D_7fb12")
+
+[node name="Hole" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(36, 182)
+texture = ExtResource("4_vjq3m")
+
+[node name="Santa" type="Node2D" parent="."]
+texture_filter = 1
+rotation = -0.179769
+script = ExtResource("5_pa0or")
+
+[node name="Sleige" type="Sprite2D" parent="Santa"]
+position = Vector2(227, 83)
+texture = ExtResource("5_hrlxt")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="Santa/Sleige" groups=["sleige"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Santa/Sleige/Area2D"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_toxop")
+
+[node name="Raindeer" type="Node2D" parent="Santa"]
+
+[node name="Raindeer" type="Sprite2D" parent="Santa/Raindeer"]
+position = Vector2(260, 88)
+texture = ExtResource("6_jpp5k")
+
+[node name="Raindeer2" type="Sprite2D" parent="Santa/Raindeer"]
+position = Vector2(285, 88)
+texture = ExtResource("6_jpp5k")
+
+[node name="Raindeer3" type="Sprite2D" parent="Santa/Raindeer"]
+position = Vector2(310, 88)
+texture = ExtResource("6_jpp5k")
+
+[node name="Raindeer4" type="Sprite2D" parent="Santa/Raindeer"]
+position = Vector2(335, 88)
+texture = ExtResource("6_jpp5k")
+
+[node name="GPUParticlesRed" type="GPUParticles2D" parent="Santa"]
+position = Vector2(211, 88)
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_hthq1")
+lifetime = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Santa"]
+libraries = {
+"": SubResource("AnimationLibrary_lye33")
+}
+autoplay = "fly"
+speed_scale = 1.5
+
+[node name="MoveTimer" type="Timer" parent="Santa"]
+wait_time = 2.0
+autostart = true
+
+[node name="PresentTimer" type="Timer" parent="Santa"]
+autostart = true
+
+[node name="presents" type="AudioStreamPlayer" parent="Santa"]
+stream = ExtResource("9_exfa1")
+volume_db = -15.018
+
+[node name="bounds" type="Node2D" parent="."]
+
+[node name="top" type="StaticBody2D" parent="bounds"]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/top"]
+shape = SubResource("WorldBoundaryShape2D_rocjl")
+
+[node name="bottom" type="StaticBody2D" parent="bounds"]
+position = Vector2(0, 216)
+rotation = -1.5708
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/bottom"]
+light_mask = 1024
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_rocjl")
+
+[node name="back" type="StaticBody2D" parent="bounds"]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/back"]
+light_mask = 1024
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_rocjl")
+
+[node name="front" type="StaticBody2D" parent="bounds"]
+position = Vector2(384, 0)
+rotation = 3.14159
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/front"]
+light_mask = 1024
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_rocjl")
+
+[node name="Tree" type="CharacterBody2D" parent="."]
+visible = false
+position = Vector2(74, 85)
+rotation = -1.5708
+collision_layer = 257
+collision_mask = 261
+motion_mode = 1
+script = ExtResource("1_jv1hq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_pd1eu")
+
+[node name="TreeSprite" type="Sprite2D" parent="Tree"]
+position = Vector2(-13, 0)
+texture = ExtResource("2_8ey4m")
+
+[node name="GPUParticlesRed" type="GPUParticles2D" parent="Tree"]
+position = Vector2(-28, 0)
+process_material = SubResource("ParticleProcessMaterial_8xngk")
+
+[node name="GPUParticlesBlue" type="GPUParticles2D" parent="Tree"]
+position = Vector2(-28, 0)
+process_material = SubResource("ParticleProcessMaterial_rm0gi")
+
+[node name="GPUParticlesYellow" type="GPUParticles2D" parent="Tree"]
+position = Vector2(-28, 0)
+process_material = SubResource("ParticleProcessMaterial_1tfef")
+
+[node name="hurtbox" type="Area2D" parent="Tree"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/hurtbox"]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_ptkh1")
+
+[node name="die" type="AudioStreamPlayer" parent="Tree"]
+stream = ExtResource("12_lgku5")
+
+[node name="Star" type="AnimatedSprite2D" parent="."]
+position = Vector2(49.5, 182.5)
+sprite_frames = SubResource("SpriteFrames_upswt")
+
+[node name="Area2D" type="Area2D" parent="Star"]
+collision_layer = 8
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Star/Area2D"]
+shape = SubResource("CircleShape2D_jqqyb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fkuxy")
+}
+autoplay = "take_off"
+
+[node name="explode" parent="." instance=ExtResource("11_7nm5e")]
+position = Vector2(30, 182)
+_duration = 0.2
+
+[node name="Rudolph" parent="." instance=ExtResource("10_tnyud")]
+position = Vector2(0, 125)
+
+[node name="break_roof" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_wqbv0")
+volume_db = -5.0
+
+[node name="hit-present" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_80uth")
+volume_db = -13.892
+
+[node name="santa-hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_eevei")
+volume_db = -10.0
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_cnnd1")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 111.0
+offset_top = 69.0
+offset_right = 266.0
+offset_bottom = 92.0
+size_flags_vertical = 1
+text = "Christmas is ruined!"
+
+[connection signal="timeout" from="Santa/MoveTimer" to="Santa" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="Santa/PresentTimer" to="Santa" method="_on_present_timer_timeout"]
+[connection signal="area_entered" from="Tree/hurtbox" to="Tree" method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Tree/hurtbox" to="Tree" method="_on_hurtbox_body_entered"]
+[connection signal="area_entered" from="Star/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Star/Area2D" to="." method="_on_star_collision"]

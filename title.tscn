@@ -1,0 +1,281 @@
+[gd_scene load_steps=11 format=3 uid="uid://buykfjskv0h5l"]
+
+[ext_resource type="Script" path="res://title.gd" id="1_awsod"]
+[ext_resource type="Texture2D" uid="uid://twxmoauloqi4" path="res://images/title-background.png" id="2_ki80k"]
+[ext_resource type="Texture2D" uid="uid://jeavhxu25iwg" path="res://images/title-text.png" id="3_tnpwa"]
+[ext_resource type="Texture2D" uid="uid://c16ckb2iju370" path="res://images/santa.png" id="4_23nrf"]
+[ext_resource type="Texture2D" uid="uid://c2uvpkyj5rsuq" path="res://images/raindeer.png" id="5_u4faf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ili5r"]
+font_size = 12
+outline_size = 1
+outline_color = Color(0.0196078, 0.0470588, 0.164706, 1)
+
+[sub_resource type="Animation" id="Animation_qm35q"]
+resource_name = "move_title"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title-text:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(34, 33), Vector2(34, 21), Vector2(42, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.5, 2.3, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Title-text:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6x2d6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title-text:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title-text:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 215)]
+}
+
+[sub_resource type="Animation" id="Animation_0p5d4"]
+resource_name = "intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title-text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 215), Vector2(0, -48)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsbnx"]
+_data = {
+"RESET": SubResource("Animation_6x2d6"),
+"intro": SubResource("Animation_0p5d4"),
+"move_title": SubResource("Animation_qm35q")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-1, -3)
+script = ExtResource("1_awsod")
+
+[node name="Title-background" type="Sprite2D" parent="."]
+position = Vector2(1, 3)
+texture = ExtResource("2_ki80k")
+centered = false
+
+[node name="Title-text" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(34, 33)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_tnpwa")
+centered = false
+
+[node name="Santa" type="Sprite2D" parent="."]
+position = Vector2(35, 166)
+texture = ExtResource("4_23nrf")
+hframes = 2
+frame = 1
+
+[node name="Raindeer" type="Sprite2D" parent="."]
+position = Vector2(57, 170)
+texture = ExtResource("5_u4faf")
+
+[node name="Raindeer2" type="Sprite2D" parent="."]
+position = Vector2(76, 170)
+texture = ExtResource("5_u4faf")
+
+[node name="Raindeer3" type="Sprite2D" parent="."]
+position = Vector2(85, 173)
+texture = ExtResource("5_u4faf")
+
+[node name="Raindeer4" type="Sprite2D" parent="."]
+position = Vector2(66, 173)
+texture = ExtResource("5_u4faf")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 169.0
+offset_top = 142.0
+offset_right = 375.0
+offset_bottom = 165.0
+text = "Press x, z, or space to start"
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 215.0
+offset_right = 383.0
+offset_bottom = 392.0
+text = "It was the night before 
+Christmas, and Santa sneezed. 
+
+Not a normal sneeze, but a 
+sneeze filled with Christmas magic.
+
+A Christmas tree, now alive 
+and covered in sneeze magic, 
+is furious!"
+label_settings = SubResource("LabelSettings_ili5r")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qsbnx")
+}
+autoplay = "move_title"

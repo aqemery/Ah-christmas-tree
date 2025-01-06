@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://kawrtmr0e2gu"]
+
+[ext_resource type="Script" path="res://elf.gd" id="1_3k54j"]
+[ext_resource type="Texture2D" uid="uid://cjwvlc6nmn0sq" path="res://images/elf.png" id="1_7ckti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo78k"]
+size = Vector2(13, 13)
+
+[node name="Elf" type="Area2D"]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("1_3k54j")
+
+[node name="Elf" type="Sprite2D" parent="."]
+texture = ExtResource("1_7ckti")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_xo78k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
